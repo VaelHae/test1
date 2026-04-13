@@ -70,10 +70,7 @@
   margin-bottom: 0.5rem;
 }
 
-.name-gold {
-  color: #c9a96e;
-  font-style: italic;
-}
+.name-gold { color: #c9a96e; font-style: italic; }
 
 .body-text {
   font-size: 0.97rem;
@@ -109,10 +106,7 @@
   margin: 0.4rem;
   text-transform: uppercase;
 }
-.btn-gold:hover {
-  background: rgba(201,169,110,0.15);
-  letter-spacing: 3px;
-}
+.btn-gold:hover { background: rgba(201,169,110,0.15); letter-spacing: 3px; }
 .btn-gold:active { transform: scale(0.97); }
 
 .btn-solid {
@@ -177,17 +171,8 @@
   font-family: Georgia, serif;
 }
 
-.progress-bar {
-  display: flex;
-  gap: 6px;
-  margin-bottom: 2rem;
-}
-.prog-seg {
-  height: 1.5px;
-  width: 32px;
-  background: rgba(201,169,110,0.2);
-  border-radius: 2px;
-}
+.progress-bar { display: flex; gap: 6px; margin-bottom: 2rem; }
+.prog-seg { height: 1.5px; width: 32px; background: rgba(201,169,110,0.2); border-radius: 2px; }
 .prog-seg.done { background: #c9a96e; }
 
 .big-symbol {
@@ -202,13 +187,10 @@
 }
 
 .finale-ring {
-  width: 120px;
-  height: 120px;
+  width: 120px; height: 120px;
   border-radius: 50%;
   border: 1px solid rgba(201,169,110,0.5);
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: flex; align-items: center; justify-content: center;
   margin: 0 auto 1.5rem;
   position: relative;
 }
@@ -222,11 +204,9 @@
 .finale-inner { font-size: 2.8rem; }
 
 .sparkle-container {
-  position: absolute;
-  top: 0; left: 0;
+  position: absolute; top: 0; left: 0;
   width: 100%; height: 100%;
-  pointer-events: none;
-  z-index: 10;
+  pointer-events: none; z-index: 10;
 }
 .sparkle {
   position: absolute;
@@ -243,7 +223,19 @@
 
 .no-float { transition: transform 0.4s cubic-bezier(.25,.8,.25,1); display: inline-block; }
 
-/* ── STATUS BADGE (locked view) ── */
+/* LOADING */
+#loadingOverlay {
+  position: fixed; inset: 0;
+  background: #0d0810;
+  display: flex; align-items: center; justify-content: center;
+  z-index: 100;
+  transition: opacity 0.6s;
+}
+#loadingOverlay.hide { opacity: 0; pointer-events: none; }
+.loading-text { color: rgba(201,169,110,0.5); font-size: 0.75rem; letter-spacing: 4px; text-transform: uppercase; animation: pulse 1.5s ease-in-out infinite; }
+@keyframes pulse { 0%,100%{opacity:1}50%{opacity:0.3} }
+
+/* LOCKED VIEW */
 #lockedView {
   display: none;
   flex-direction: column;
@@ -269,57 +261,25 @@
   margin-bottom: 2rem;
   font-family: Georgia, serif;
 }
-.status-badge.yes {
-  background: rgba(201,169,110,0.15);
-  border: 0.5px solid #c9a96e;
-  color: #c9a96e;
-}
-.status-badge.no {
-  background: rgba(100,80,130,0.15);
-  border: 0.5px solid rgba(150,120,180,0.5);
-  color: #9a7aaa;
-}
+.status-badge.yes { background: rgba(201,169,110,0.15); border: 0.5px solid #c9a96e; color: #c9a96e; }
+.status-badge.no  { background: rgba(100,80,130,0.15); border: 0.5px solid rgba(150,120,180,0.5); color: #9a7aaa; }
 .status-dot {
   width: 6px; height: 6px;
   border-radius: 50%;
   background: currentColor;
   animation: pulse 2s ease-in-out infinite;
 }
-@keyframes pulse {
-  0%,100% { opacity: 1; transform: scale(1); }
-  50% { opacity: 0.4; transform: scale(0.6); }
-}
 
-.lock-icon {
-  font-size: 1.4rem;
-  color: rgba(201,169,110,0.4);
-  letter-spacing: 2px;
-  margin-top: 2rem;
-  display: block;
-}
-.lock-label {
-  font-size: 0.68rem;
-  letter-spacing: 3px;
-  color: rgba(201,169,110,0.3);
-  text-transform: uppercase;
-  margin-top: 0.4rem;
-}
+.lock-icon { font-size: 1.4rem; color: rgba(201,169,110,0.4); margin-top: 2rem; display: block; }
+.lock-label { font-size: 0.68rem; letter-spacing: 3px; color: rgba(201,169,110,0.3); text-transform: uppercase; margin-top: 0.4rem; }
+.answered-on { font-size: 0.72rem; color: #4a3a5a; letter-spacing: 2px; margin-top: 1.5rem; }
 
-.answered-on {
-  font-size: 0.72rem;
-  color: #4a3a5a;
-  letter-spacing: 2px;
-  margin-top: 1.5rem;
-}
-
-/* ── STATUS CARD (yes vs no) ── */
 .status-yes-card {
   background: rgba(201,169,110,0.06);
   border: 0.5px solid rgba(201,169,110,0.25);
   border-radius: 20px;
   padding: 2rem 2.2rem;
-  max-width: 400px;
-  width: 100%;
+  max-width: 400px; width: 100%;
   margin: 1rem 0 1.5rem;
 }
 .status-no-card {
@@ -327,23 +287,78 @@
   border: 0.5px solid rgba(150,120,180,0.2);
   border-radius: 20px;
   padding: 2rem 2.2rem;
-  max-width: 400px;
-  width: 100%;
+  max-width: 400px; width: 100%;
   margin: 1rem 0 1.5rem;
 }
+
+/* ADMIN VIEW */
+#adminView {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 3rem 2rem;
+  text-align: center;
+  position: relative;
+  z-index: 2;
+}
+#adminView.active { display: flex; }
+.admin-card {
+  background: rgba(255,255,255,0.03);
+  border: 0.5px solid rgba(201,169,110,0.2);
+  border-radius: 20px;
+  padding: 2.5rem;
+  max-width: 380px; width: 100%;
+  margin: 1.5rem 0;
+}
+.admin-label { font-size: 0.7rem; letter-spacing: 3px; color: #c9a96e; text-transform: uppercase; margin-bottom: 0.4rem; display: block; }
+.admin-value { font-size: 1.4rem; color: #f5eaff; margin-bottom: 1.5rem; line-height: 1.4; }
+.admin-date  { font-size: 0.8rem; color: #6a5a7a; letter-spacing: 1.5px; }
+.admin-refresh {
+  background: transparent;
+  border: 0.5px solid rgba(201,169,110,0.3);
+  color: rgba(201,169,110,0.6);
+  padding: 0.6rem 1.5rem;
+  border-radius: 40px;
+  font-family: Georgia, serif;
+  font-size: 0.75rem;
+  letter-spacing: 2px;
+  cursor: pointer;
+  margin-top: 1rem;
+  text-transform: uppercase;
+  transition: all 0.3s;
+}
+.admin-refresh:hover { border-color: #c9a96e; color: #c9a96e; }
 </style>
 </head>
 <body>
-
 <div class="wrap" id="mainWrap">
   <canvas class="stars-canvas" id="starsCanvas"></canvas>
   <div class="sparkle-container" id="sparkleCont"></div>
 
-  <!-- ── LOCKED VIEW (shown if already answered) ── -->
+  <!-- LOADING -->
+  <div id="loadingOverlay">
+    <p class="loading-text">memuat...</p>
+  </div>
+
+  <!-- ADMIN VIEW -->
+  <div id="adminView">
+    <div class="ornament">— panel rahasia —</div>
+    <div class="divider"><div class="divider-line"></div><div class="divider-gem"></div><div class="divider-line"></div></div>
+    <h1 class="main-title" style="font-size:1.6rem;">Status Jawaban<br><span class="name-gold">Cimyy</span></h1>
+    <div class="admin-card">
+      <span class="admin-label">Jawaban</span>
+      <div class="admin-value" id="adminAnswer">...</div>
+      <span class="admin-label">Tanggal</span>
+      <div class="admin-date" id="adminDate">...</div>
+    </div>
+    <button class="admin-refresh" onclick="adminRefresh()">↻ Refresh</button>
+  </div>
+
+  <!-- LOCKED VIEW -->
   <div id="lockedView">
     <div class="ornament">— sudah terjawab —</div>
-
-    <!-- YES locked -->
     <div id="lockYes" style="display:none; flex-direction:column; align-items:center;">
       <div class="status-badge yes"><span class="status-dot"></span>Status: Iya ♡</div>
       <div class="finale-ring"><span class="finale-inner">♡</span></div>
@@ -359,8 +374,6 @@
         "Dari semua hal yang bisa kupilih,<br>aku memilih untuk menyukaimu."
       </p>
     </div>
-
-    <!-- NO locked -->
     <div id="lockNo" style="display:none; flex-direction:column; align-items:center;">
       <div class="status-badge no"><span class="status-dot"></span>Status: Belum tahu...</div>
       <span class="big-symbol" style="animation:none; opacity:0.4;">♡</span>
@@ -373,15 +386,12 @@
         </p>
       </div>
     </div>
-
     <span class="lock-icon">🔒</span>
     <p class="lock-label">halaman ini telah terkunci</p>
     <p class="answered-on" id="answeredDate"></p>
   </div>
 
-  <!-- ── NORMAL FLOW PAGES ── -->
-
-  <!-- PAGE 0: Intro -->
+  <!-- PAGE 0 -->
   <div class="page active" id="p0">
     <div class="ornament">— sebuah pesan untukmu —</div>
     <div class="divider"><div class="divider-line"></div><div class="divider-gem"></div><div class="divider-line"></div></div>
@@ -419,22 +429,10 @@
     <p class="body-text" style="font-size:0.85rem; margin-bottom:1rem;">Bukan karena kebetulan. Ini alasannya.</p>
     <div class="card-glass">
       <div class="reasons-grid">
-        <div class="reason-item">
-          <span class="reason-num">I</span>
-          <span class="reason-text">Caramu hadir selalu membuat ruangan terasa hangat</span>
-        </div>
-        <div class="reason-item">
-          <span class="reason-num">II</span>
-          <span class="reason-text">Tawamu adalah hal yang paling tulus yang pernah kudengar</span>
-        </div>
-        <div class="reason-item">
-          <span class="reason-num">III</span>
-          <span class="reason-text">Kamu jujur pada dirimu sendiri, dan itu langka</span>
-        </div>
-        <div class="reason-item">
-          <span class="reason-num">IV</span>
-          <span class="reason-text">Di dekatmu, aku selalu ingin menjadi versi terbaik diriku</span>
-        </div>
+        <div class="reason-item"><span class="reason-num">I</span><span class="reason-text">Caramu hadir selalu membuat ruangan terasa hangat</span></div>
+        <div class="reason-item"><span class="reason-num">II</span><span class="reason-text">Tawamu adalah hal yang paling tulus yang pernah kudengar</span></div>
+        <div class="reason-item"><span class="reason-num">III</span><span class="reason-text">Kamu jujur pada dirimu sendiri, dan itu langka</span></div>
+        <div class="reason-item"><span class="reason-num">IV</span><span class="reason-text">Di dekatmu, aku selalu ingin menjadi versi terbaik diriku</span></div>
       </div>
     </div>
     <button class="btn-gold" onclick="go(3)">Masih ada lagi &nbsp;›</button>
@@ -457,7 +455,7 @@
     <button class="btn-gold" onclick="go(4)">Ada satu pertanyaan &nbsp;›</button>
   </div>
 
-  <!-- PAGE 4: Pertanyaan -->
+  <!-- PAGE 4 -->
   <div class="page" id="p4">
     <div class="progress-bar">
       <div class="prog-seg done"></div><div class="prog-seg done"></div><div class="prog-seg done"></div><div class="prog-seg done"></div>
@@ -481,7 +479,7 @@
     <p style="margin-top:1rem; font-size:0.75rem; color:#5a4d6a; letter-spacing:1px;">tombol emas itu menunggumu</p>
   </div>
 
-  <!-- PAGE 5: Yes! -->
+  <!-- PAGE 5 -->
   <div class="page" id="p5">
     <div class="ornament">— mulai hari ini —</div>
     <div class="finale-ring"><span class="finale-inner">♡</span></div>
@@ -499,39 +497,73 @@
 </div>
 
 <script>
-// ── STORAGE KEY ──
-const STORAGE_KEY = 'cimyy_jawaban_v1';
+const BIN_ID  = '69dd49f4856a6821892dbe77';
+const API_KEY = '$2a$10$l0pQiwru7dTU/Jd7N8L8s.lfZDzU/6tW3NMixDUCuF7BkEkEKWPPG';
+const BIN_URL = `https://api.jsonbin.io/v3/b/${BIN_ID}`;
 
-// ── LOAD SAVED ANSWER ──
-function loadSaved() {
-  try {
-    const raw = localStorage.getItem(STORAGE_KEY);
-    if (!raw) return null;
-    return JSON.parse(raw);
-  } catch(e) { return null; }
+async function getStatus() {
+  const res = await fetch(BIN_URL + '/latest', {
+    headers: { 'X-Master-Key': API_KEY }
+  });
+  const data = await res.json();
+  return data.record;
 }
 
-function saveAnswer(answer) {
-  const data = {
+async function setStatus(answer) {
+  const body = {
+    answered: true,
     answer,
     date: new Date().toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' }),
     ts: Date.now()
   };
-  try { localStorage.setItem(STORAGE_KEY, JSON.stringify(data)); } catch(e) {}
-  showLocked(data);
+  await fetch(BIN_URL, {
+    method: 'PUT',
+    headers: { 'Content-Type': 'application/json', 'X-Master-Key': API_KEY },
+    body: JSON.stringify(body)
+  });
+  return body;
+}
+
+window.addEventListener('DOMContentLoaded', async () => {
+  initStars();
+  requestAnimationFrame(drawStars);
+
+  // Admin mode: buka URL dengan ?admin
+  if (window.location.search.includes('admin')) {
+    showAdmin();
+    return;
+  }
+
+  try {
+    const status = await getStatus();
+    if (status && status.answered) {
+      showLocked(status);
+      return;
+    }
+  } catch(e) {}
+
+  hideLoading();
+});
+
+async function saveAnswer(answer) {
+  const tempData = {
+    answered: true,
+    answer,
+    date: new Date().toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' }),
+    ts: Date.now()
+  };
+  showLocked(tempData);
   if (answer === 'yes') {
     burst(false);
     setTimeout(() => burst(false), 600);
     setTimeout(() => burst(false), 1200);
   }
+  try { await setStatus(answer); } catch(e) { console.warn('sync failed'); }
 }
 
 function showLocked(data) {
-  // hide all pages
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-  const lv = document.getElementById('lockedView');
-  lv.classList.add('active');
-
+  document.getElementById('lockedView').classList.add('active');
   if (data.answer === 'yes') {
     document.getElementById('lockYes').style.display = 'flex';
     document.getElementById('lockNo').style.display = 'none';
@@ -539,34 +571,74 @@ function showLocked(data) {
     document.getElementById('lockYes').style.display = 'none';
     document.getElementById('lockNo').style.display = 'flex';
   }
-
-  const dateEl = document.getElementById('answeredDate');
-  dateEl.textContent = 'dijawab pada ' + data.date;
+  document.getElementById('answeredDate').textContent = 'dijawab pada ' + (data.date || '—');
+  hideLoading();
 }
 
-// ── ON LOAD: check if already answered ──
-window.addEventListener('DOMContentLoaded', () => {
-  const saved = loadSaved();
-  if (saved) {
-    showLocked(saved);
-  }
-  initStars();
-  requestAnimationFrame(t => drawStars(t));
-});
+async function showAdmin() {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.getElementById('adminView').classList.add('active');
+  hideLoading();
+  await adminRefresh();
+}
 
-// ── CANVAS STARS ──
+async function adminRefresh() {
+  document.getElementById('adminAnswer').textContent = '...';
+  document.getElementById('adminDate').textContent = '...';
+  try {
+    const s = await getStatus();
+    if (s && s.answered) {
+      document.getElementById('adminAnswer').textContent =
+        s.answer === 'yes' ? '✅  Ya, aku mau ♡' : '🤍  Belum tahu...';
+      document.getElementById('adminDate').textContent = s.date || '—';
+    } else {
+      document.getElementById('adminAnswer').textContent = '⏳  Belum dijawab';
+      document.getElementById('adminDate').textContent = '—';
+    }
+  } catch(e) {
+    document.getElementById('adminAnswer').textContent = '⚠️  Gagal load';
+    document.getElementById('adminDate').textContent = 'cek koneksi internet';
+  }
+}
+
+function hideLoading() {
+  const ol = document.getElementById('loadingOverlay');
+  ol.classList.add('hide');
+  setTimeout(() => ol.style.display = 'none', 700);
+}
+
+function go(n) {
+  document.querySelectorAll('.page').forEach((p, i) => {
+    p.classList.toggle('active', i === n);
+  });
+  burst(true);
+}
+
+let noMoves = 0;
+function runAway() {
+  noMoves++;
+  const btn = document.getElementById('noBtn');
+  const labels = ['Pikir dulu...', 'Masa iya tidak?', 'Kamu yakin?', 'Tidak bisa...'];
+  if (noMoves >= 4) {
+    btn.style.opacity = '0';
+    btn.style.pointerEvents = 'none';
+    setTimeout(() => saveAnswer('no'), 600);
+    return;
+  }
+  btn.textContent = labels[noMoves - 1];
+  const dx = (Math.random() - 0.5) * 160;
+  const dy = (Math.random() - 0.5) * 80;
+  btn.style.transform = `translate(${Math.round(dx)}px, ${Math.round(dy)}px)`;
+}
+
 const canvas = document.getElementById('starsCanvas');
 const ctx = canvas.getContext('2d');
+const stars = [];
 
-function resizeCanvas() {
+function initStars() {
   const wrap = document.getElementById('mainWrap');
   canvas.width = wrap.offsetWidth;
   canvas.height = Math.max(wrap.offsetHeight, window.innerHeight);
-}
-
-const stars = [];
-function initStars() {
-  resizeCanvas();
   stars.length = 0;
   for (let i = 0; i < 120; i++) {
     stars.push({
@@ -593,34 +665,6 @@ function drawStars(t) {
 
 window.addEventListener('resize', initStars);
 
-// ── PAGE NAVIGATION ──
-function go(n) {
-  document.querySelectorAll('.page').forEach((p, i) => {
-    p.classList.toggle('active', i === n);
-  });
-  burst(true);
-}
-
-// ── NO BUTTON RUNAWAY ──
-let noMoves = 0;
-function runAway() {
-  noMoves++;
-  const btn = document.getElementById('noBtn');
-  const labels = ['Pikir dulu...', 'Masa iya tidak?', 'Kamu yakin?', 'Tidak bisa...'];
-  if (noMoves >= 4) {
-    btn.style.opacity = '0';
-    btn.style.pointerEvents = 'none';
-    // After 4 attempts, save as 'no' and lock
-    setTimeout(() => saveAnswer('no'), 600);
-    return;
-  }
-  btn.textContent = labels[noMoves - 1];
-  const dx = (Math.random() - 0.5) * 160;
-  const dy = (Math.random() - 0.5) * 80;
-  btn.style.transform = `translate(${Math.round(dx)}px, ${Math.round(dy)}px)`;
-}
-
-// ── SPARKLE BURST ──
 function burst(subtle) {
   const cont = document.getElementById('sparkleCont');
   const count = subtle ? 6 : 24;
